@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <title>Thiệp Cưới</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+        }
+
+        .container {
+            max-width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 0px;
+            overflow-y: scroll; /* Cho phép cuộn dọc */
+            height: auto; /* Điều chỉnh chiều cao tự động */
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            max-width: 90%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .text-content {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .text-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+        /* Đặt văn bản "I love three things..." ở góc trên giữa */
+        .text-overlay {
+            position: absolute;
+            top: 1%;
+            left: 50%;
+            transform: translateX(-50%); /* Căn chính giữa theo chiều ngang */
+            text-align: center;
+            color: #f1f1f1;
+            font-size: 1.5vw;
+            font-family: 'Segoe UI', sans-serif;
+            border-radius: 10px;
+            line-height: 1.6; /* Tăng khoảng cách giữa các dòng */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Đổ bóng cho chữ */
+            white-space: nowrap;
+        }
+
+        /* Dòng chữ "Welcome to our wedding" nằm dưới */
+        .welcome-text {
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: #f1f1f1;
+            font-size: 4vw;
+            font-family: 'Dancing Script', cursive; /* Sử dụng font Dancing Script */
+            padding: 10px;
+            line-height: 1.6;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Đổ bóng cho chữ */
+            white-space: nowrap;
+        }
+
+        /* Dòng chữ nghiêng nằm ở giữa */
+        .italic-text {
+            position: absolute;
+            top: 25%; /* Đặt văn bản cách 25% từ trên cùng */
+            left: 50%;
+            transform: translateX(-50%) rotate(30deg); /* Căn giữa theo chiều ngang và nghiêng chữ */
+            text-align: center;
+            color: #f1f1f1;
+            font-size: 4vw;
+            font-family: 'Dancing Script', cursive;
+            line-height: 1.6;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            white-space: nowrap;
+        }
+
+        /* Dòng chữ "Nguyễn Khoa GROOM" */
+        .groom-text {
+            position: absolute;
+            top: 50%;
+            left: 20%;
+            transform: translateX(-50%); /* Căn chính giữa theo chiều ngang */
+            text-align: center;
+            color: #f1f1f1;
+            font-size: 4vw;
+            font-family: 'Dancing Script', cursive;
+            line-height: 1.6;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            white-space: nowrap;
+        }
+
+        /* Dòng chữ "Mỹ Nhật BRIDE" */
+        .bride-text {
+            position: absolute;
+            top: 50%;
+            left: 80%;
+            transform: translateX(-50%); /* Căn chính giữa theo chiều ngang */
+            text-align: center;
+            color: #f1f1f1;
+            font-size: 4vw;
+            font-family: 'Dancing Script', cursive;
+            line-height: 1.6;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            white-space: nowrap;
+        }
+
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .image-wrapper img {
+                max-width: 100%;
+            }
+        }
+        /* Media query cho các màn hình điện thoại lớn hơn (iPhone 14 Pro Max) */
+        @media (min-width: 430px) {
+            .text-overlay {
+                font-size: 1vw;
+            }
+            .welcome-text {
+                font-size: 2vw;
+                top: 2.5%;
+            }
+            .italic-text {
+                font-size: 2vw;
+                top: 15%;
+            }
+            .groom-text {
+                font-size: 2vw;
+            }
+            .bride-text {
+                font-size: 2vw;
+            }
+        }
+
+        /* Media query cho các điện thoại nhỏ hơn iPhone 14 Pro Max (dưới 768px) */
+        @media (max-width: 768px) {
+            .background {
+                width: 100%;
+                height: 100%;
+            }
+            .text-overlay {
+                font-size: 2.5vw;
+            }
+            .welcome-text {
+                font-size: 5vw;
+                top: 3%;
+            }
+            .italic-text {
+                font-size: 3vw;
+                top: 20%;
+            }
+            .groom-text {
+                font-size: 5vw;
+            }
+            .bride-text {
+                font-size: 5vw;
+            }
+        }
+
+        /* Media query cho các điện thoại nhỏ (dưới 480px) */
+        @media (max-width: 480px) {
+            .text-overlay {
+                font-size: 2.5vw;
+            }
+            .welcome-text {
+                top: 3%;
+                left: 50%;
+                font-size: 5vw;
+            }
+            .italic-text {
+                font-size: 3vw;
+                top: 6%;
+                left: 12%;
+            }
+            .groom-text {
+                font-size: 5vw;
+            }
+            .bride-text {
+                font-size: 5vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-wrapper">
+            <img src="images/PIG03825.JPG" alt="Hình 1">
+            <img src="images/PIG02879.JPG" alt="Hình 2">
+            <img src="images/PIG02826.JPG" alt="Hình 3">
+        </div>
+        <!-- Hình ảnh nền -->
+    <div class="background"></div>
+
+    <!-- Văn bản "I love three things..." -->
+    <div class="text-overlay">
+        <p>I love three things in this world, Sun, moon and you.<br>
+        Sun for morning, moon for night,<br>
+        and you forever.</p>
+    </div>
+
+    <!-- Dòng chữ "Welcome to our wedding" nằm dưới -->
+    <div class="welcome-text">
+        <p>Welcome to our wedding</p>
+    </div>
+    
+    <!-- Dòng chữ nghiêng nằm ở giữa -->
+    <div class="italic-text">
+        <p>We got married</p>
+    </div>
+
+    <!-- Dòng chữ "Nguyễn Khoa GROOM" -->
+    <div class="groom-text">
+        <p>Nguyễn Khoa <br> GROOM</p>
+    </div>
+
+    <!-- Dòng chữ "Mỹ Nhật BRIDE" -->
+    <div class="bride-text">
+        <p>Mỹ Nhật <br> BRIDE</p>
+    </div>
+
+    </div>
+</body>
+</html>
